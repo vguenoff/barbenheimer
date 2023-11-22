@@ -13,7 +13,11 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      // breakpoints: {
+      //   md: '760px',
+      // },
+    },
   },
 
   globalCss: {

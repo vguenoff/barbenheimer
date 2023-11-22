@@ -5,9 +5,9 @@ const votes = {
   oppenheimer: 5,
 }
 
-export const getVotes = () => votes
+export const getVotes = async () => votes
 
-export const vote = (language: keyof typeof votes) => {
+export const vote = async (language: keyof typeof votes) => {
   votes[language] += 1
 
   return votes

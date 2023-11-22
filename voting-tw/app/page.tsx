@@ -1,12 +1,12 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image, { StaticImageData } from "next/image";
+'use client'
+import { useEffect, useState } from 'react'
+import Image, { StaticImageData } from 'next/image'
 
-import barbie from "./(assets)/barbie.jpg";
-import oppenheimer from "./(assets)/oppenheimer.jpg";
-import vs from "./(assets)/vs.png";
+import barbie from './(assets)/barbie.jpg'
+import oppenheimer from './(assets)/oppenheimer.jpg'
+import vs from './(assets)/vs.png'
 
-import { getVotes, vote } from "./(voting)/voting";
+import { getVotes, vote } from './(voting)/voting'
 
 const ProgressBar = ({ percentage }: { percentage: number }) => (
   <div className="w-full h-6 bg-gray-200 rounded-full">
@@ -15,7 +15,7 @@ const ProgressBar = ({ percentage }: { percentage: number }) => (
       style={{ width: `${percentage}%` }}
     ></div>
   </div>
-);
+)
 
 const VersusImage = () => (
   <div className="relative w-10 h-10">
@@ -33,7 +33,7 @@ const VersusImage = () => (
       }}
     />
   </div>
-);
+)
 
 const Card = ({
   image,
@@ -43,12 +43,12 @@ const Card = ({
   height,
   alt,
 }: {
-  image: StaticImageData;
-  onClick: () => void;
-  percentage: number;
-  width: number;
-  height: number;
-  alt: string;
+  image: StaticImageData
+  onClick: () => void
+  percentage: number
+  width: number
+  height: number
+  alt: string
 }) => (
   <div
     className="bg-slate-500 rounded-xl p-5 flex flex-col justify-center items-center"
@@ -63,23 +63,23 @@ const Card = ({
     />
     <ProgressBar percentage={percentage} />
   </div>
-);
+)
 
 const Header = ({ totalVotes }: { totalVotes: number }) => (
   <header className="flex bg-slate-800 text-white text-3xl shadow-lg px-4 py-2 rounded-b-2xl">
     <div className="flex-grow font-bold">Barbenheimer</div>
     <div className="font-thin">{totalVotes} Votes</div>
   </header>
-);
+)
 
 export default function Home() {
-  const [votes, setVotes] = useState({ barbie: 0, oppenheimer: 0 });
+  const [votes, setVotes] = useState({ barbie: 0, oppenheimer: 0 })
 
   useEffect(() => {
-    getVotes().then(setVotes);
-  }, []);
+    getVotes().then(setVotes)
+  }, [])
 
-  const totalVotes = votes.barbie + votes.oppenheimer;
+  const totalVotes = votes.barbie + votes.oppenheimer
 
   return (
     <main className="mx-auto max-w-7xl px-0 md:px-5">
@@ -92,7 +92,7 @@ export default function Home() {
             width={550}
             height={800}
             alt="Barbie Poster"
-            onClick={() => vote("barbie").then(setVotes)}
+            onClick={() => vote('barbie').then(setVotes)}
             percentage={(votes.barbie / totalVotes) * 100}
           />
         </div>
@@ -107,11 +107,11 @@ export default function Home() {
             width={194}
             height={300}
             alt="Oppenheimer Poster"
-            onClick={() => vote("oppenheimer").then(setVotes)}
+            onClick={() => vote('oppenheimer').then(setVotes)}
             percentage={(votes.oppenheimer / totalVotes) * 100}
           />
         </div>
       </div>
     </main>
-  );
+  )
 }
